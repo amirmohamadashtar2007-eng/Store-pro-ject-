@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>kala shope</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+<link rel="stylesheet" href="newfail.css">
+<style>
+.big-cards {
+  display: flex;
+  flex-wrap: nowrap; 
+  gap: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.big-card {
+  flex: 0 0 calc(50% - 15px); 
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.big-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.big-card:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .big-cards {
+    flex-wrap: wrap; 
+  }
+  .big-card {
+    flex: 0 0 100%;
+  }
+}
+
+/* ---------------- */
+.brands-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* عنوان */
+.brands-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+/* ساختار اسلایدر */
+.brands-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.brands-slider {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.brands-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* هر برند */
+.brand-card {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ddd;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+.brand-card img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+.brand-card:hover {
+  transform: scale(1.05);
+}
+
+/* دکمه‌ها */
+.brand-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+.brand-btn:hover {
+  background: #ef394e;
+  color: #fff;
+}
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+  .brand-card {
+    width: 110px;
+    height: 110px;
+  }
+}
+@media (max-width: 480px) {
+  .brand-card {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+
+.categories-quad{
+  width: 100%;
+  padding: 16px 12px;
+  box-sizing: border-box;
+  background:#fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+margin-top: 10px;
+}
+
+.cq-container{
+  max-width: 1320px;   
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 16px;
+}
+
+.cq-card{
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  padding: 14px;
+  background:#fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow .2s ease;
+}
+.cq-card:hover{ box-shadow:0 6px 18px rgba(0,0,0,.06); }
+
+.cq-head{
+  display:flex;
+  flex-direction: column;
+  gap:4px;
+}
+.cq-title{
+  font-size: 1.05rem;
+  margin:0;
+  color:#222;
+  font-weight:700;
+}
+.cq-sub{
+  margin:0;
+  font-size:.85rem;
+  color:#777;
+}
+
+
+.cq-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+}
+.cq-item{
+  display:block;
+  border: 1px solid #eee;
+  border-radius:10px;
+  padding: 6px;
+  background:#fff;
+  transition: transform .2s ease, box-shadow .2s ease;
+  aspect-ratio: 1/1;           
+}
+.cq-item:hover{
+  transform: translateY(-2px);
+  box-shadow:0 6px 14px rgba(0,0,0,.06);
+}
+.cq-item img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* فوتر کارت */
+.cq-foot{
+  margin-top: 4px;
+  display:flex;
+  justify-content:flex-start;
+}
+.cq-more{
+  font-size:.9rem;
+  color:#1f7cff;
+  text-decoration:none;
+}
+.cq-more:hover{ text-decoration:underline; }
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 1200px){
+  .cq-container{ grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 900px){
+  .cq-container{ grid-template-columns: repeat(2,1fr); }
+  .cq-grid{ grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 560px){
+  .cq-container{ grid-template-columns: 1fr; }
+  .cq-grid{ grid-template-columns: repeat(3,1fr); }
+  .categories-quad{ padding:12px 8px; }
+}
+/* -------------------- */
+
+.bestsellers-section {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bestsellers-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+
+.bestsellers-slider {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.product-card {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.product-card h3 {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+/* -------فونر و سایت */
+.main-footer {
+  background: #797070;
+  color: #fff;
+  padding: 40px 20px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ff4b2b;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-column p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #ff4b2b;
+}
+
+.footer-column form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.footer-column form input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+.footer-column form button {
+  background: #ff4b2b;
+  border: none;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.footer-column form button:hover {
+  background: #ff2a00;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #444;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-column form {
+    flex-direction: column;
+  }
+}
+
+
+
+
+</style>
+</head>
+  <body>
+    <header class="header">
+      <div class="top-bar">
+        <a href="#">پشتیبانی</a>
+        <a href="#">سوالات متداول</a>
+        <a href="#">پیگیری سفارش</a>
+      </div>
+
+      <nav class="main-nav">
+        <div class="logo">کالا شاپ</div>
+
+        <div class="search-box">
+          <input type="text" placeholder="جستجوی کالا، برند و دسته‌بندی..." />
+          <button><i class="fa fa-search"></i></button>
+        </div>
+
+        <div class="icons">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-bell"></i>
+        </div>
+      </nav>
+    </header>
+    <header class="main_bar">
+      <div class="location-box">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>شهر خود را انتخاب کنید</span>
+      </div>
+      <ul class="nav-box">
+        <li><a href="#">شگفت‌انگیزها</a></li>
+        <li><a href="#">سوپرمارکت</a></li>
+        <li><a href="#">تخفیف‌ها</a></li>
+        <li><a href="#">پرفروش‌ترین‌ها</a></li>
+        <li><a href="#">هدیه‌ها</a></li>
+        <li><a href="#">دیجیتال</a></li>
+        <li><a href="#">مد و پوشاک</a></li>
+        <li><a href="#">خانه و آشپزخانه</a></li>
+      </ul>
+    </header>
+    <div class="slider-container">
+      <button class="prev">&#10094;</button>
+      <div class="slider">
+        <div class="slide">
+          <img
+            src="slider/ed8fda1e10d9fca46073b50aee68289b8c5603be_1753871093.gif"
+            alt=""
+          />
+        </div>
+        <div class="slide">
+          <img
+            src="slider/9d077c52f3aee3b4ef226650cb2a576b469bc6a5_1753197329.gif"
+            alt=""
+          />
+        </div>
+        <div class="slide"><img src="images/img3.jpg" alt="" /></div>
+        <div class="slide"><img src="images/img4.jpg" alt="" /></div>
+      </div>
+      <button class="next">&#10095;</button>
+    </div>
+    <!-- ---------------------- -->
+    <div class="section">
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/139deecc67bc7f12c6d984955c59957dc7e49385_1753977953.png"
+            alt=""
+          />
+          <p class="caption">طلای دیجیتال<br />بدون کارمزد</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/52e0ce33f1ce60cafa198eaecbca90320aaeb7a7_1753513353.png"
+            alt=""
+          />
+          <p class="caption">پمپ مخزن<br />موتور برق</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/7493e66e491c18d699274a48a53a9dfcb8aa2e93_1717230600.png"
+            alt=""
+          />
+          <p class="caption">لیگ فیفا<br />فروشگاه حضوری</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/78ccd40cbf305fb067de78ddab5be84f69589c8d_1669150455.png"
+            alt=""
+          />
+          <p class="caption">اشتراک<br />پلاس</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/a3d75bd934740d37f23709a778ec136f2ce41651_1751120161.jpg"
+            alt=""
+          />
+          <p class="caption">تخفیف<br />طلای فیزیکی</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/a418818d43ecca0c20a12430298a1f2daf2ee354_1753274810.png"
+            alt=""
+          />
+          <p class="caption">گردونه<br />میلیاردی</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/b9f37d8283afd3a309e30756a38c3f879453262a_1734768282.png"
+            alt=""
+          />
+          <p class="caption">تخفیف<br />بومی محلی</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/da9a6e72085322d88537fd7c33dbe9edbd34db51_1753884517.jpg"
+            alt=""
+          />
+          <p class="caption">تمدید شانس<br />بیت کویین</p>
+        </a>
+      </div>
+      <div class="section-box-1">
+        <a href="#">
+          <img
+            class="img-box-1"
+            src="IMG/e4de6f360fcda4f501f21419ba40a100460740cd_1733129128.png"
+            alt=""
+          />
+          <p class="caption">خرید<br />قسطی</p>
+        </a>
+      </div>
+    </div>
+ 
+    <div class="offer-box">
+      <div class="offer-header">
+        <h2>پیشنهاد شگفت‌انگیز</h2>
+        <div class="offer-timer">۱۱ : ۵۲ : ۳۷</div>
+      </div>
+    
+      <button class="scroll-btn prev">&#10094;</button>
+    
+      <div class="card-scroll-container">
+        
+        <div class="discount-card">
+          <img src="باکس 1/d6518a10b641b32833525b184f518e9ad0a38ec0_1751860865 (1).webp" alt="محصول 1" />
+          <h4 class="product-title">گوشی موبایل ژایواکو<br>مدلF121دوسیم</h4>
+          <div class="price-box">
+            <span class="old-price">۱۲۰۰۰۰۰ تومان</span>
+            <span class="new-price">۹۸۰,۰۰۰ تومان</span>
+          </div>
+          <span class="discount-badge">٪۱۸</span>
+        </div>
+    
+        
+        <div class="discount-card">
+          <img src="باکس 1/b216b8f151b43587d20a58a90fc41eb06f2aa3e3_1736767358.webp" alt="محصول 2" />
+          <h4 class="product-title">گوشی موبایل تی سی ال<BR>مدل50 5Gnextpaper</BR></h4>
+          <div class="price-box">
+            <span class="old-price">۱۵‍‍‍‍‍‍‍‍‍‍۰۰۰۰۰۰ تومان</span>
+            <span class="new-price">۱,۶۰۰,۰۰۰ تومان</span>
+          </div>
+          <span class="discount-badge">٪۲۰</span>
+        </div>
+    ‍‍‍‍
+       
+        <div class="discount-card">
+          <img src="باکس 1/b44f3a316196b3a09af78072bedf89a1012d8051_1754247085.webp" alt="محصول 2" />
+          <h4 class="product-title">هدفون بلوتوثی مدل <br>ایرپاد ز پرو new gold</h4>
+          <div class="price-box">
+            <span class="old-price">۲۸۶۰۰۰ تومان</span>
+            <span class="new-price">۵۱۸۰۰۰ تومان</span>
+          </div>
+          <span class="discount-badge">٪۲۰</span>
+        </div>
+    ‍‍‍‍
+        <!-- ------------ -->
+        <div class="discount-card">
+          <img src="باکس 1/f18461946289bf8b15487a5dd90fe5edecbff7d4_1727883762.webp" alt="محصول 2" />
+          <h4 class="product-title">لپ تاپ 15.6 اینچی ایسوس<br>مدل 15 vivobook</h4>
+          <div class="price-box">
+            <span class="old-price">۲۹,۰۰۰,۰۰۰ تومان</span>
+            <span class="new-price">۲۶,۲۹۹,۰۰۰ تومان</span>
+          </div>
+          <span class="discount-badge">٪۹</span>
+        </div>
+  <!-- ------------------- -->
+  <div class="discount-card">
+    <img src="باکس 1/fcdca7474df2bc36401a8c56eef9761d3530b4da_1745825004.webp" alt="محصول 2" />
+    <h4 class="product-title">هدفون بلوتوثی ایکس او<br>مدلx23</h4>
+    <div class="price-box">
+      <span class="old-price">۱,۱۵۰,۰۰۰ تومان</span>
+      <span class="new-price">۶۴۹,۰۰۰
+        تومان</span>
+    </div>
+    <span class="discount-badge">٪۲۰</span>
+  </div>      
+<!-- -------------------------------- -->
+<div class="discount-card">
+  <img src="باکس 1/e551b03d3f0d9e4d2880923cc4ea6e159be66a78_1710186212.webp" alt="محصول 2" />
+  <h4 class="product-title">لپ تاپ 15.6 اینچی ایسوس<br>مدلf15 tufgaiming</h4>
+  <div class="price-box">
+    <span class="old-price">۷۲,۵۰۰,۰۰۰ تومان</span>
+    <span class="new-price">۷۱,۵۰۰,۰۰۰
+      تومان</span>
+  </div>
+  <span class="discount-badge">٪۱</span>
+</div>  
+<!-- -------------------- -->
+<div class="discount-card">
+  <img src="باکس 1/2f29a8443896fe3aa5673c953039b07058cb3d6d_1663071046.webp" alt="محصول 2" />
+  <h4 class="product-title">پاور بانک اکستروم مدل <br> مدلAPB10KP15 </h4>
+  <div class="price-box">
+    <span class="old-price">۱,۱۶۷,۰۰۰ تومان</span>
+    <span class="new-price">۶۹۹,۰۰۰
+      تومان</span>
+  </div>
+  <span class="discount-badge">٪۴۰</span>
+</div>  
+<!-- ---------------------- -->
+<div class="discount-card">
+  <img src="باکس 1/c8d8912c7641b280d7ca8da0ad1f560b915cdef2_1752135912.webp" alt="محصول 2" />
+  <h4 class="product-title">پاوربانک آیرنج مدل IR- D251 <br></h4>
+  <div class="price-box">
+    <span class="old-price">۲,۵۰۰,۰۰۰ تومان</span>
+    <span class="new-price">۱,۳۹۰,۰۰۰
+      تومان</span>
+  </div>
+  <span class="discount-badge">٪۴۴</span>
+</div>  
+<!-- ------------------- -->
+<div class="discount-card">
+  <img src="باکس 1/cdef9bb513b5d6254423347f979a2631b0b9633f_1736670963.webp" alt="محصول 2" />
+  <h4 class="product-title">پاوربانک آیرنج مدل IR- D251 <br></h4>
+  <div class="price-box">
+    <span class="old-price">۲,۵۰۰,۰۰۰ تومان</span>
+    <span class="new-price">۱,۳۹۰,۰۰۰
+      تومان</span>
+  </div>
+  <span class="discount-badge">٪۴۴</span>
+</div>  
+<!-- ------------------- -->
+</div>
+    
+      <button class="scroll-btn next">&#10095;</button>
+    </div>
+    <!-- ------------------- -->
+    <div class="product-section">
+      <!-- ردیف اول -->
+      <div class="product-row">
+        <div class="product-card"><img src="box 2/b37e2e05a45f22cd135dd75ae01ccd66310b40f4_1754382436.gif" alt=""></div>
+        <div class="product-card"><img src="box 2/a45662d7bf0cb4d8d21c527a65105f7371558f80_1754395172.gif" alt=""></div>
+        <div class="product-card"><img src="box 2/46f50ca104de4f7e67f8bc63649b66a82334884d_1754465142.webp" alt=""></div>
+        <div class="product-card"><img src="box 2/68c3f81389351ed529aad63b08d528d3e4118451_1754722709.gif" alt=""></div>
+      </div>
+    
+
+    
+     
+      <div class="product-row">
+        <div class="product-card"><img src="box 2/177f5b4eebdb1594c783df3e88e4b56859318cb8_1754555724.webp" alt=""></div>
+        <div class="product-card"><img src="box 2/62009d8d2d51acd2e3bce9b68fce24d6d26ecb6b_1754468775.webp" alt=""></div>
+        <div class="product-card"><img src="box 2/af53f7665e051fc2d5154dfe1c455ec8f9715398_1754730953.webp" alt=""></div>
+        <div class="product-card"><img src="box 2/c88831e157c6fce84088c75ffd05d94fa1f91765_1744201133.webp" alt=""></div>
+      </div>
+    </div>
+    
+<!-- ------------------- -->
+<div class="cat2-section">
+  <div class="cat2-title">خرید بر اساس دسته‌بندی</div>
+  <div class="cat2-arrow right" onclick="cat2Scroll(200)">&#10095;</div>
+  <div class="cat2-arrow left" onclick="cat2Scroll(-200)">&#10094;</div>
+
+  <div class="cat2-wrapper" id="cat2Wrapper">
+      <div class="cat2-slider" id="cat2Slider">
+          <div class="cat2-item"><img src="grid boiix/09a98a13c782e12a245930b4515d243b17734a33_1740299441.jpg"><span>موبایل</span></div>
+          <div class="cat2-item"><img src="grid boiix/78135af4274ad7b7fcdaec7e5912689e5f5db96a_1740299548.jpg"><span>طلا و نقره</span></div>
+          <div class="cat2-item"><img src="grid boiix/7cf1fed6dac6bdfd1b888db6bf8f443ea680244b_1748692252.jpg"><span>لپ تاپ</span></div>
+          <div class="cat2-item"><img src="grid boiix/deb3f514c62761797eb6a49e1559268b8bce3219_1740299561.jpg"><span>تجهیزات پزشکی و سلامت</span></div>
+          <div class="cat2-item"><img src="grid boiix/151ec29bae111afd3b6a0e71cec5c4c26f1c3014_1740299456.jpg"><span>کالای دیجیتال</span></div>
+          <div class="cat2-item"><img src="grid boiix/0cdf9c404e509371c3177a334be948a7e500419c_1740299574.jpg"><span>کتای لوازم تحریر هنر</span></div>
+          <div class="cat2-item"><img src="grid boiix/8a042388b93c5116604f35092a1fb35f8f0756be_1740299467.jpg"><span>خانه و اشپزخانه</span></div>
+          <div class="cat2-item"><img src="grid boiix/4d4582205d0d5045c2bd94c5e910bbb49ae4fd4e_1740299590.jpg"><span>ورزش و سفر</span></div>
+          <div class="cat2-item"><img src="grid boiix/d825f64f509cd5067a9022528c465e8ca705f60d_1740299511.jpg"><span>لوازم خانگی برقی</span></div>
+          <div class="cat2-item"><img src="grid boiix/f35b3eba7de8bf2432fff4f53abfa8cbaa6e71d6_1740299603.jpg"><span>کارت هدیه و گیف کارت</span></div>
+          <div class="cat2-item"><img src="grid boiix/b196bbdea97f57bfac02dc1666d7401b16ee4bcb_1740299482.jpg"><span>ارایشی و بهداشتی</span></div>
+          <div class="cat2-item"><img src="grid boiix/03552aa1293fec9f43477814ca62afdacdac18e3_1740299496.jpg"><span>خودرو و موتور سیکلت</span></div>
+          <div class="cat2-item"><img src="grid boiix/6f5284dccdb280616bbfe58533ecc483de4639af_1740299648.jpg"><span>اسباب بازی کودک</span></div>
+          <div class="cat2-item"><img src="grid boiix/fb6303218362cd2c48b40fef5da89ad33a5c04d7_1740299524.jpg"><span>ابزار الات و تجهیزات</span></div>
+          <div class="cat2-item"><img src="grid boiix/9a4dfac524f8a865f9f69e38d5434fa69fe63e3b_1740299663.jpg"><span>محصولات بومی محلی</span></div>
+          <div class="cat2-item"><img src="grid boiix/b3d4eaefebe67ab8d849296ea2e7e113cde8094c_1740299538.jpg"><span>مد و پوشاک</span></div>
+          <div class="cat2-item"><img src="grid boiix/b3d4eaefebe67ab8d849296ea2e7e113cde8094c_1740299538.jpg"><span>پت شاپ</span></div>
+          <div class="cat2-item"><img src="grid boiix/7adb0cc6edc18a6d04b9ba3bdd424b1bcce47848_1740299618.jpg"><span>سوپرمارکت انلاین</span></div>     
+        </div>
+  </div>
+</div>
+<!-- ---------------------- -->
+<div class="big-cards">
+  <div class="big-card">
+    <img src="box3/0c4bf5aab61e3d538fc06787cd3c050d90781ca2_1754205343.webp" alt="Big Card 1">
+  </div>
+  <div class="big-card">
+    <img src="box3/663f3fe99c5024ac26e7f29597c6e49fb2073b2a_1754205787.gif" alt="Big Card 2">
+  </div>
+</div>
+
+<!-- ---------------- -->
+<section class="brands-section">
+  <h2 class="brands-title">محبوب‌ترین برندها</h2>
+
+  <div class="brands-container">
+    <button class="brand-btn prev-btn">&#10094;</button>
+
+    <div class="brands-slider">
+      <div class="brand-card"><img src="box4/2c36ceb629598fa31b9b321fcd4e47773bd93ef7_1649498016.png" alt="برند 1"></div>
+      <div class="brand-card"><img src="box4/7d615272ba7fc5dd708195ae858e2971de86a06f_1649498033.png" alt="برند 2"></div>
+      <div class="brand-card"><img src="box4/9f5727fd7c13dc4b10c879a1865d77bc1fb333ce_1705308969.jpg" alt="برند 3"></div>
+      <div class="brand-card"><img src="box4/1800.png" alt="برند 4"></div>
+      <div class="brand-card"><img src="box4/5a10ae95eb42fc96906c8062563b28062668d418_1722238640.png" alt="برند 5"></div>
+      <div class="brand-card"><img src="box4/3f0e8a262651232007912c06d7cd69f7d9b4bfa4_1662306119.jpg" alt="برند 6"></div>
+      <div class="brand-card"><img src="box4/d23e8875d5f7a9735e433f1fd86a1513902efc8b_1604470597.jpg" alt="برند 7"></div>
+      <div class="brand-card"><img src="box4/d23e8875d5f7a9735e433f1fd86a1513902efc8b_1604470597.png" alt="برند 8"></div>
+      <div class="brand-card"><img src="box4/070d1eb61036eaa9d9981aeadd4a0f05cf93efe6_1627122768.png" alt="برند 5"></div>
+      <div class="brand-card"><img src="box4/af664f0bcf9bc412b741c618e6e52fc2d090198f_1619269008.png" alt="برند 6"></div>
+      <div class="brand-card"><img src="box4/e44886020b773202d6d431e2fef2f3bd8bd3bc7f_1737817444.jpg" alt="برند 7"></div>
+      <div class="brand-card"><img src="box4/2994.png" alt="برند 8"></div>
+      <div class="brand-card"><img src="box4/3960.jpg" alt="برند 5"></div>
+      <div class="brand-card"><img src="box4/3972.png" alt="برند 6"></div>
+      <div class="brand-card"><img src="box4/1313.png" alt="برند 7"></div>
+      <div class="brand-card"><img src="box4/f660c46ffc6d58a19e5c0af9d03c50be9a929571_1627214766.png" alt="برند 8"></div>
+      <div class="brand-card"><img src="box4/311.png" alt="برند 5"></div>
+      <div class="brand-card"><img src="box4/efb14accdad9be1b2176aa0317c8bbac43733831_1609325767.png" alt="برند 6"></div>
+      <div class="brand-card"><img src="box4/87dcb454f4d8df28bd2f8fd902f0f27b5fb1fac4_1666761801.jpg" alt="برند 7"></div>
+      <div class="brand-card"><img src="box4/477ab48bb7261595c02cb0f4c504837e464f00d0_1663485028.jpg" alt="برند 8"></div>
+      <div class="brand-card"><img src="box4/100008301.jpg" alt="برند 5"></div>
+      <div class="brand-card"><img src="box4/bff03daf9cf71a71b7e41b31255ba9e747d1a01f_1644133724.jpg" alt="برند 6"></div>
+      <div class="brand-card"><img src="box4/100012444.jpg" alt="برند 7"></div>
+      
+    
+    
+    </div>
+
+    <button class="brand-btn next-btn">&#10095;</button>
+  </div>
+</section>
+
+<!-- ---------------- -->
+<section class="categories-quad" dir="rtl">
+  <div class="cq-container">
+    <!-- ستون 1 -->
+    <article class="cq-card">
+      <header class="cq-head">
+        <h3 class="cq-title">کیف و کاور گوشی</h3>
+        <p class="cq-sub">بر اساس علاقه‌ی شما</p>
+      </header>
+
+      <div class="cq-grid">
+        <a class="cq-item" href="#"><img src="categories-quad/2686323f4372e104fa49a7a1e719c920e2a1a228_1626788390.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/4dc207a699d2d5c9823e38a01a9a9b88f856d1c6_1699776960.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/d9fa4c9a1093bb3bc150c37071849717f445d2b5_1688861958.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/eaf2163eb233ba86ae665822bd88cd7229189321_1741246405.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/e88ff8e40bdcf52b3cb140204989526b6a8b5c8f_1614959189.webp" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/816882208468096eeb3d2f0f851c8f1300b1ed36_1643859587.webp" alt=""></a>
+      </div>
+
+      <footer class="cq-foot">
+        <a class="cq-more" href="#">مشاهده همه</a>
+      </footer>
+    </article>
+
+    <!-- ستون 2 -->
+    <article class="cq-card">
+      <header class="cq-head">
+        <h3 class="cq-title">گوشی موبایل</h3>
+        <p class="cq-sub">پیشنهادهای ویژه</p>
+      </header>
+
+      <div class="cq-grid">
+        <a class="cq-item" href="#"><img src="categories-quad/c0a7ce006d11c222bce16bd3cdd8d79aeb6689bc_1738134271.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/5af568b4909435c6a215ad5e728e902db234b673_1736597759.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/dff2156759436746038c65d072776eb81a79dae5_1753811545.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/cc974c182c5b6509f22e7dae18112cd140bb981f_1666094381.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/2342ad87776c9801a8116d41950cb5909bddc16b_1738145086.webp" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/bfe8d2db8c2081dcd4652224de941f311a6f83be_1753803917.webp" alt=""></a>
+      </div>
+
+      <footer class="cq-foot">
+        <a class="cq-more" href="#">مشاهده همه</a>
+      </footer>
+    </article>
+
+    <!-- ستون 3 -->
+    <article class="cq-card">
+      <header class="cq-head">
+        <h3 class="cq-title">هدفون، هدست و هندزفری</h3>
+        <p class="cq-sub">متناسب با سلیقه‌ی شما</p>
+      </header>
+
+      <div class="cq-grid">
+        <a class="cq-item" href="#"><img src="categories-quad/4ffb6ba596073611cb2e2c9284d40683da7ca150_1749221040.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/808fa3bdac3a60d05f4f86e564279073e05dc6dc_1739950012.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/8d2788c9f451f20511d70cb2bff7f6e1627b8fe8_1745827631.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/8d4e945a3447a8169f443df139ac9f31013f247b_1754249656.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/e2834ab3c83cede137b6e79ce9b3e02d77a9338b_1745827620.webp" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/becd1fd10769a4d16f9e14d368f7e5e871ad5034_1745825000.webp" alt=""></a>
+      </div>
+
+      <footer class="cq-foot">
+        <a class="cq-more" href="#">مشاهده همه</a>
+      </footer>
+    </article>
+
+    <!-- ستون 4 -->
+    <article class="cq-card">
+      <header class="cq-head">
+        <h3 class="cq-title">لپ‌تاپ و الکترونیک</h3>
+        <p class="cq-sub">براساس سابقه‌ی شما</p>
+      </header>
+
+      <div class="cq-grid">
+        <a class="cq-item" href="#"><img src="categories-quad/6be720f39751ec93b781393de087bf8b3a5067c8_1748608806.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/9df097f1eb1824be45d89a63a8ff3b207a79d934_1754295960.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/a75a48fda23ca041993e51beb3598ce8490890d5_1754236726.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/fc6c90d4c5c40d5e2f2df486576da0962c6831d2_1754254568.jpg" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/3153eceef920298e07a56e2ce03cfca054322b37_1691318690.webp" alt=""></a>
+        <a class="cq-item" href="#"><img src="categories-quad/2914534c2ff6fc240fbd7d45d89de1567340eb9b_1735115435.webp" alt=""></a>
+      </div>
+
+      <footer class="cq-foot">
+        <a class="cq-more" href="#">مشاهده همه</a>
+      </footer>
+    </article>
+  </div>
+</section>
+<!-- --------------------- -->
+<section class="bestsellers-section">
+  <h2 class="bestsellers-title">پرفروش‌ترین کالاها</h2>
+  
+  <div class="bestsellers-slider">
+    <div class="product-card">
+      <img src="box-5/c518a5ed1b6f1a19dca7bb69a94fbec0cea6df25_1667285916.webp" alt="کالا 1">
+      <h3>کره ۵۰ گرم کاله</h3>
+    </div>
+    <div class="product-card">
+      <img src="box-5/f9d853fcd65f1d325b6f57f0f69b60de7ce8091c_1752336564.webp" alt="کالا 2">
+      <h3>کنسرو تون ماهی در روغن گیاهی<br>محفل۱۸۰ گرم</h3>
+    </div>
+    <div class="product-card">
+      <img src="box-5/4533b7c7d14d8c2f95688bc114d032e75aad30ee_1660250171.webp" alt="کالا 3">
+      <h3>قرص کلاژن یورتال</h3>
+    </div>
+    <div class="product-card">
+      <img src="box-5/4717210.webp" alt="کالا 4">
+      <h3>شیر پرچرب فرادما کاله حجم 0.2 لیتر</h3>
+    </div>
+    <div class="product-card">
+      <img src="box-5/4f9e4d4972d7878c553096e7456e2ee1d1da4bed_1754245493.webp" alt="کالا 5">
+      <h3>فلوئید ضدآفتاب بی‌رنگ مای</h3>
+    </div>
+    <div class="product-card">
+      <img src="box-5/0c351a90ea18b5143fb08752c978c05684e41bcd_1641899699.webp" alt="کالا 6">
+      <h3>گوجه فرنگی Fresh مقدار 1 کیلوگرم</h3>
+    </div>
+  </div>
+</section>
+<!-- ---------------- -->
+<footer class="main-footer">
+  <div class="footer-top">
+    <div class="footer-column">
+      <h3>درباره ما</h3>
+      <p>ما یک فروشگاه اینترنتی هستیم که بهترین محصولات را با بهترین قیمت ارائه می‌دهیم. هدف ما رضایت و اعتماد شماست.</p>
+    </div>
+    <div class="footer-column">
+      <h3>لینک‌های مفید</h3>
+      <ul>
+        <li><a href="#">صفحه اصلی</a></li>
+        <li><a href="#">محصولات</a></li>
+        <li><a href="#">سوالات متداول</a></li>
+        <li><a href="#">تماس با ما</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>خدمات مشتریان</h3>
+      <ul>
+        <li><a href="#">پیگیری سفارش</a></li>
+        <li><a href="#">شرایط بازگشت کالا</a></li>
+        <li><a href="#">پشتیبانی آنلاین</a></li>
+        <li><a href="#">راهنمای خرید</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>عضویت در خبرنامه</h3>
+      <form>
+        <input type="email" placeholder="ایمیل خود را وارد کنید">
+        <button type="submit">ثبت</button>
+      </form>
+      <div class="social-icons">
+        <a href="#"><img src="icons/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="icons/telegram.png" alt="Telegram"></a>
+        <a href="#"><img src="icons/whatsapp.png" alt="WhatsApp"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 تمامی حقوق این وبسایت محفوظ است | طراحی شده با ❤️ توسط تیم ما</p>
+  </div>
+</footer>
+
+
+
+
+</body>
+
+  <script src="web.js"></script>
+</html>
